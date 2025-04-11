@@ -37,3 +37,6 @@ jobs:
 
       - name: Checking OS
         run: uname -a && ps -aux 
+
+      - name: Checking Disk and Memory
+        run: df -lh && free -m 
