@@ -9,14 +9,15 @@ on:
 jobs:
   build:
     runs-on: self-hosted
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11' ]
+    name: Python ${{ matrix.python-version }} sample
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-    - uses: actions/setup-python@v5
-      with:
-        python-version: |
-            3.8
-            3.11
-            3.12
-            3.13
-    - run: python -V
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+      - run: python -V
