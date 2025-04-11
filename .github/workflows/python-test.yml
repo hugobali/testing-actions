@@ -8,6 +8,8 @@ on:
 
 jobs:
   build:
+    env:
+      PIP_ROOT_USER_ACTION: ignore
     runs-on: self-hosted
     strategy:
       matrix:
@@ -16,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses:  actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
